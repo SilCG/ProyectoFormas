@@ -1,0 +1,30 @@
+Figura (abstracta)
+├── Circulo
+├── Rectangulo
+│   └── Cuadrado
+├── Rombo
+└── Triangulo
+    ├── Equilatero
+    ├── Isosceles
+    └── Escaleno
+
+
+La jerarquía de cuerpos, que además calculan calcularVolumen():
+Cuerpo (abstracta)
+├── Cubo       → tiene Cuadrados
+├── Cilindro   → tiene Círculos y un Rectángulo
+├── Tetraedro  → tiene Triángulos equiláteros
+└── Esfera     → no tiene figuras, solo su radio
+
+
+// Notas importantes
+No se escribió imprimirInformacion() en Circulo, pero igual funciona. Por qué?
+
+Porque Circulo lo heredó de su mamá Figura. Cuando Java ejecuta circulo1.imprimirInformacion(), pasa esto:
+
+1. Busca el método en Circulo y no lo encuentra.
+2. Sube a Figura y ahí lo encuentra.
+3. Dentro de ese método aparecen this, calcularPerimetro() y calcularArea().
+4. Java se pregunta: “¿De quién es este objeto realmente?” Es un Circulo, entonces usa el toString() y las fórmulas de Circulo.
+
+Así que la madre puso el formulario y la hija llenó los espacios. Esto es el ligado dinámico que pide el enunciado. ¡Ya lo tiene funcionando!
